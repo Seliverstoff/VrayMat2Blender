@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{64176A56-E384-4957-B053-E3921334462C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>VrayMat2Blender</RootNamespace>
+    <AssemblyName>VrayMat2Blender</AssemblyName>
+    <CodePage>65001</CodePage>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="gtk-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="gdk-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="glib-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="glade-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="pango-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="atk-sharp, Version=2.4.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Mono.Posix" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="gtk-gui\gui.stetic">
+      <LogicalName>gui.stetic</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="gtk-gui\generated.cs" />
+    <Compile Include="MainWindow.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VRscene.cs" />
+    <Compile Include="gtk-gui\VrayMat2Blender.MainWindow.cs" />
+    <Compile Include="VrayType.cs" />
+    <Compile Include="BlenderMtlCreator.cs" />
+    <Compile Include="dialogs\About.cs" />
+    <Compile Include="gtk-gui\VrayMat2Blender.About.cs" />
+    <Compile Include="plugins\BRDFVRayMtl.cs" />
+    <Compile Include="plugins\TexBitmap.cs" />
+    <Compile Include="plugins\BRDFDiffuse.cs" />
+    <Compile Include="dialogs\Help.cs" />
+    <Compile Include="gtk-gui\VrayMat2Blender.Help.cs" />
+    <Compile Include="dialogs\Pathfinding.cs" />
+    <Compile Include="gtk-gui\VrayMat2Blender.Pathfinding.cs" />
+    <Compile Include="plugins\BRDFBump.cs" />
+    <Compile Include="plugins\BitmapBuffer.cs" />
+    <Compile Include="plugins\UVWGenChannel.cs" />
+    <Compile Include="plugins\BRDFGlass.cs" />
+    <Compile Include="plugins\BRDFLayered.cs" />
+    <Compile Include="plugins\MtlSingleBRDF.cs" />
+    <Compile Include="plugins\BRDFSSS2Complex.cs" />
+    <Compile Include="plugins\BRDFLight.cs">
+      <DependentUpon>BitmapBuffer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="plugins\BRDFCarPaint.cs" />
+    <Compile Include="plugins\BRDFHair3.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
